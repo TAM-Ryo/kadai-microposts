@@ -1,0 +1,20 @@
+<% if @favoring.any? %>
+  <ul class="media-list">
+    <% @favoring.each do |favoring| %>
+      <li class="media">
+        <div class="media-left">
+          <img class="media-object img-rounded" src="<%= gravatar_url(@user,options = {size: 50})%>" alt="">
+        </div>
+        <div class="media-body">
+          <div>
+            <%= link_to @user.name, user_path(@user) %> posted at <%= favoring.created_at %><span class="text-muted"></span>
+          </div>
+          <div>
+            <p><%= favoring.content %></p>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate @favoring %>
+<% end %>
